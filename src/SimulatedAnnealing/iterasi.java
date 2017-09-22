@@ -20,7 +20,7 @@ package SimulatedAnnealing;
 public class iterasi {
 
     //inisialisasi nilai awal alpha dan Tawal
-    private static final double alpha = 0.88;
+    private static final double alpha = 0.98;
     double Tawal = 10000000;
     double Takhir = 1;
 
@@ -51,12 +51,12 @@ public class iterasi {
                 //nilai current state diganti oleh new state
                 //x1 diganti dengan x1new
                 //x2 diganti dengan x2new
-                currentState = newState;
-                x1 = x1new;
-                x2 = x2new;
+                
 
                 if (currentState > newState) {
-                    bestOfFar = newState;
+                    currentState = newState;
+                    x1 = x1new;
+                    x2 = x2new;
                 }
 
                 //jika new state lebih besar dari current state, maka
@@ -65,12 +65,12 @@ public class iterasi {
                 peluang = Math.exp((-deltaE) / Tawal);
                 r = operasi.randomInRange(0, 1);
                 if (r < peluang) {
-                    currentState = newState;
-                    x1 = x1new;
-                    x2 = x2new;
+                   
 
                     if (currentState > newState) {
-                        bestOfFar = newState;
+                         currentState = newState;
+                        x1 = x1new;
+                        x2 = x2new;
                     }
                 }
             }
